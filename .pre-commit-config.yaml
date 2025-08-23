@@ -24,13 +24,13 @@ repos:
       - id: prettier
 
   - repo: https://github.com/python-jsonschema/check-jsonschema
-    rev: 0.33.2
+    rev: 0.33.3
     hooks:
       - id: check-github-workflows
       - id: check-renovate
 
   - repo: https://github.com/crate-ci/typos
-    rev: v1.34.0
+    rev: v1.35.5
     hooks:
       - id: typos
 

@@ -2,7 +2,7 @@
 Type=Service
 ServiceTypes=KonqPopupMenu/Plugin
 MimeType=image/*
-Actions=images-upload;images-upload-b;images-upload-t;image-optim;image-optim-png;getnative;getnative-detail
+Actions=images-upload;images-upload-b;images-upload-t;image-optim;image-optim-png
 X-KDE-Priority=TopLevel
 X-KDE-Submenu=image-menu
 
@@ -27,13 +27,3 @@ Exec=~/git/shell-scripts/src/image-optim.zsh %F
 Name=image-optim-png
 Icon=application/x-kdeuser1
 Exec=~/git/shell-scripts/src/image-optim.zsh --png-mod %F
-
-[Desktop Action getnative]
-Name=getnative
-Icon=application/x-kdeuser1
-Exec=~/git/shell-scripts/src/getnative.zsh %F
-
-[Desktop Action getnative-detail]
-Name=getnative-detail
-Icon=application/x-kdeuser1
-Exec=~/git/shell-scripts/src/getnative.zsh --detail %F

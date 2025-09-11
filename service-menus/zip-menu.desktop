@@ -1,0 +1,11 @@
+[Desktop Entry]
+Type=Service
+ServiceTypes=KonqPopupMenu/Plugin
+MimeType=application/zip
+Actions=cbz-repack
+X-KDE-Submenu=zip-menu
+X-KDE-Priority=TopLevel
+
+[Desktop Action cbz-repack]
+Name=cbz-repack
+Exec=~/git/shell-scripts/src/cbz-repack.zsh %F

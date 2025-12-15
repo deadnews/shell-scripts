@@ -7,6 +7,6 @@
 ## Installation
 
 ```sh
-pipx install dotbot
+uv tool install dotbot
 dotbot -c install.conf.yaml
 ```

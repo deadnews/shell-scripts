@@ -11,4 +11,4 @@ for F in "$@"; do
 done
 
 # Deps:
-# pipx install git+https://github.com/tp7/prass
+# uv tool install git+https://github.com/tp7/prass

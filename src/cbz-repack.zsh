@@ -11,7 +11,7 @@ for F in "$@"; do
         size=$(du -sh "${F}" | cut -f1)
         tmp=$(mktemp -d)
 
-        if unzip -jq "${F}" -d ${tmp}; then
+        if unzip -jqo "${F}" -d ${tmp}; then
             fd . ${tmp} -e jpg -e jpeg -x jpegoptim --strip-all --all-progressive --quiet
             fd . ${tmp} -e png -x cwebp -mt -quiet -m 6 -z 9 -lossless {} -o {.}.webp
             # fd . ${tmp} -e webp -x cwebp -quiet -m 6 -pass 5 -q 99 {} -o {.}.webp

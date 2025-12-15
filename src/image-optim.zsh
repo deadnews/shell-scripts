@@ -17,6 +17,8 @@ main() {
     elif [[ ${mime} == "image/jpeg" ]]; then
         jpegoptim --strip-all --all-progressive "${1}"
         mv "${1}" "${1:r}.jpg"
+    elif [[ ${mime} == "image/avif" ]]; then
+        mv "${1}" "${1:r}.avif"
     fi
 }
 

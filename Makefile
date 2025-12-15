@@ -5,9 +5,9 @@ default: dotbot
 dotbot:
 	dotbot -c install.conf.yaml
 
-install:
-	pre-commit install
+update:
+	prek auto-update
 
 check: pc
 pc:
-	pre-commit run -a
+	prek run -a

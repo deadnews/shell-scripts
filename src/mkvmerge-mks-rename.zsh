@@ -3,7 +3,7 @@ set -euo pipefail
 
 lang='eng'
 
-name='[BD]'
+name='[name]'
 
 for F in "$@"; do
     # make mks

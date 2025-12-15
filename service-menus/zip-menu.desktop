@@ -3,7 +3,6 @@ Type=Service
 ServiceTypes=KonqPopupMenu/Plugin
 MimeType=application/zip
 Actions=cbz-repack
-X-KDE-Submenu=zip-menu
 X-KDE-Priority=TopLevel
 
 [Desktop Action cbz-repack]

@@ -1,13 +1,14 @@
 .PHONY: all clean test default dotbot install check pc
 
-default: dotbot
+default: check
 
 dotbot:
 	dotbot -c install.conf.yaml
 
-update:
-	prek auto-update
-
 check: pc
 pc:
 	prek run -a
+
+update:
+	prek auto-update --freeze
+	pinact run -update

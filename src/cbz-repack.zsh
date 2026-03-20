@@ -12,10 +12,11 @@ for F in "$@"; do
         tmp=$(mktemp -d)
 
         if unzip -jqo "${F}" -d ${tmp}; then
-            fd . ${tmp} -e jpg -e jpeg -x jpegoptim --strip-all --all-progressive --quiet
-            fd . ${tmp} -e png -x cwebp -mt -quiet -m 6 -z 9 -lossless {} -o {.}.webp
-            # fd . ${tmp} -e webp -x cwebp -quiet -m 6 -pass 5 -q 99 {} -o {.}.webp
+            fd . ${tmp} -e jpg -e jpeg -x cjxl -d 0 --lossless_jpeg=1 {} {.}.jxl
+            fd . ${tmp} -e jpg -e jpeg -x rm -f
+            fd . ${tmp} -e png -x cjxl -d 0 {} {.}.jxl
             fd . ${tmp} -e png -x rm -f
+            # fd . ${tmp} -e webp -x cwebp -quiet -m 6 -pass 5 -q 99 {} -o {.}.webp
             bsdtar --format=zip -cf "${F:r}.cbz" -C ${tmp} .
             echo ${size} → $(du -sh "${F}")
         else

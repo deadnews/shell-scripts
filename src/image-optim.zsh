@@ -1,8 +1,8 @@
 #!/usr/bin/env zsh
 # Usage:
-# ~/git/shell-scripts/src/image-optim.zsh --png-mod --level 7 $F
+# ~/git/shell-scripts/src/image-optim.zsh --png-mod --png-level 7 --convert-webp $F
 
-zparseopts -D -E -F -A opts -- -png-mod -level:
+zparseopts -D -E -F -A opts -- -png-mod -png-level -convert-webp:
 source $(which env_parallel.zsh)
 
 main() {
@@ -10,13 +10,18 @@ main() {
 
     if [[ ${mime} == "image/png" ]]; then
         if [[ "${(k)opts[--png-mod]}" ]]; then
-            optipng -strip all -o${opts[--level]:='5'} "${1}"
+            optipng -strip all -o${opts[--png-level]:='5'} "${1}"
         else
-            cwebp -m 6 -z 9 -lossless "${1}" -o "${1:r}.webp" && unlink "${1}"
+            cjxl -d 0 "${1}" "${1:r}.jxl" && unlink "${1}"
         fi
     elif [[ ${mime} == "image/jpeg" ]]; then
-        jpegoptim --strip-all --all-progressive "${1}"
-        mv "${1}" "${1:r}.jpg"
+        cjxl -d 0 --lossless_jpeg=1 "${1}" "${1:r}.jxl" && unlink "${1}"
+    elif [[ ${mime} == "image/webp" ]]; then
+        if [[ "${(k)opts[--convert-webp]}" ]]; then
+            if rg -a -q 'VP8L' "${1}"; then
+                dwebp "${1}" -o - | cjxl -d 0 - "${1:r}.jxl" && unlink "${1}"
+            fi
+        fi
     elif [[ ${mime} == "image/avif" ]]; then
         mv "${1}" "${1:r}.avif"
     fi

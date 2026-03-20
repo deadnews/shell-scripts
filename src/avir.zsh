@@ -11,11 +11,6 @@ for F in "$@"; do
     #   -sampling-factor 4:2:0 "${resized}" "${resized:r}.jpg"
 
     color1='#534BA1'
-    color2='#8d2f2f'
-    color3='#224488'
-    color4='#1d8434'
-    color5='#3b389b'
-    color6='#000000'
 
     python -c "from PIL import Image, ImageOps; \
     img = Image.open(\"${resized}\"); \

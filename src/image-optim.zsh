@@ -2,7 +2,7 @@
 # Usage:
 # ~/git/shell-scripts/src/image-optim.zsh --png-mod --png-level 7 --convert-webp $F
 
-zparseopts -D -E -F -A opts -- -png-mod -png-level -convert-webp:
+zparseopts -D -E -F -A opts -- -png-mod -png-level: -convert-webp
 source $(which env_parallel.zsh)
 
 main() {

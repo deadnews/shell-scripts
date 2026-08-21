@@ -298,11 +298,6 @@ function vpy-build() {
     rm -rf ${root_dir}
 }
 
-function test-build() {
-    # znedi3-build https://github.com/sekrit-twc/znedi3
-    # znedi3-build https://github.com/JeremyMahieu/znedi3
-}
-
 function system-build() {
     rm ~/.cache/yay/vapoursynth-git/vapoursynth-git-*.pkg.tar.zst
     yes | yay -S --rebuildtree vapoursynth-git
@@ -313,7 +308,6 @@ function system-build() {
 
 # system-build
 vpy-build
-# test-build
 # x265-build stable
 # x265-build master
 # x265-build-mod Yuuki

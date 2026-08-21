@@ -12,18 +12,16 @@ main() {
         if [[ "${(k)opts[--png-mod]}" ]]; then
             optipng -strip all -o${opts[--png-level]:='5'} "${1}"
         else
-            cjxl -d 0 "${1}" "${1:r}.jxl" && unlink "${1}"
+            cjxl --quiet -d 0 "${1}" "${1:r}.jxl" && unlink "${1}"
         fi
     elif [[ ${mime} == "image/jpeg" ]]; then
-        cjxl -d 0 --lossless_jpeg=1 "${1}" "${1:r}.jxl" && unlink "${1}"
+        cjxl --quiet -d 0 --lossless_jpeg=1 "${1}" "${1:r}.jxl" && unlink "${1}"
     elif [[ ${mime} == "image/webp" ]]; then
-        if [[ "${(k)opts[--convert-webp]}" ]]; then
-            if rg -a -q 'VP8L' "${1}"; then
-                dwebp "${1}" -o - | cjxl -d 0 - "${1:r}.jxl" && unlink "${1}"
-            fi
+        if [[ "${(k)opts[--convert-webp]}" ]] && rg -a -q 'VP8L' "${1}"; then
+            dwebp "${1}" -o - | cjxl --quiet -d 0 - "${1:r}.jxl" && unlink "${1}"
         fi
     elif [[ ${mime} == "image/avif" ]]; then
-        mv "${1}" "${1:r}.avif"
+        [[ ${1:e} == "avif" ]] || mv "${1}" "${1:r}.avif"
     fi
 }
 

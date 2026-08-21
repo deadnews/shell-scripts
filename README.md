@@ -2,7 +2,7 @@
 
 > shell scripts collection, mostly for video/audio/image processing
 
-[![CI: Main](https://img.shields.io/github/actions/workflow/status/deadnews/shell-scripts/main.yml?branch=main&logo=github&logoColor=white&label=main)
+[![CI: Main](https://img.shields.io/github/actions/workflow/status/deadnews/shell-scripts/main.yml?branch=main&logo=github&logoColor=white&label=main)](https://github.com/deadnews/shell-scripts)
 
 ## Installation
 

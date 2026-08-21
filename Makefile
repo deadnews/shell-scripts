@@ -10,5 +10,5 @@ pc:
 	prek run -a
 
 update:
-	prek auto-update --freeze
+	prek update
 	pinact run --update
